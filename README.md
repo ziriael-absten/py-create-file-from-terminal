@@ -13,44 +13,46 @@ current directory.
 - If only `-f` flag passed, means first item is the file name and all other
 following are content lines inside this file
 
-`python create_file.py -f file.txt Line1 Line2 Line3` - creates
+`python create_file.py -f file.txt "Line1 content" "Line2 content" "Line3
+content"` - creates
 file `file.txt` inside current directory with content:
 ```python
 2022-02-01 14:41:10
-1 Line1
-2 Line2
-3 Line3
+1 Line1 content
+2 Line2 content
+3 Line3 content
 ```
 App should add current timestamp at the top and number lines. If `file.txt`
 already exists it should add content below:
 
-`python create_file.py -f file.txt AnotherLine1 AnotherLine2 
-AnotherLine3`
+`python create_file.py -f file.txt "Another line1 content" "Another line2 content" 
+"Another line3 content"`
 ```python
 2022-02-01 14:41:10
-1 Line1
-2 Line2
-3 Line3
+1 Line1 content
+2 Line2 content
+3 Line3 content
 
 2022-02-01 14:46:01
-1 AnotherLine1
-2 AnotherLine2
-3 AnotherLine3
+1 Another line1 content
+2 Another line2 content
+3 Another line3 content
 ```
 
 
 - If both `-d` and `-f` flags passed, app creates directory and
 file with content inside this directory.
 
-`python create_file.py -d dir1 dir2 -f file.txt Line1 Line2 Line3` - 
+`python create_file.py -d dir1 dir2 -f file.txt "Line1 content" "Line2 content" 
+"Line3 content"` - 
 creates directory `dir1/dir2` inside current directory and 
 creates file `file.txt`
 inside that directory with content:
 ```python
 2022-02-01 14:46:01
-1 Line1
-2 Line2
-3 Line3
+1 Line1 content
+2 Line2 content
+3 Line3 content
 ```
 It would be relevant to use:
 - `sys.argv` to read arguments from the terminal
