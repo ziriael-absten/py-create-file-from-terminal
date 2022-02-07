@@ -10,12 +10,19 @@ path.
 
 `python create_file.py -d dir1 dir2` - creates directory `dir1/dir2` inside
 current directory.
-- If only `-f` flag passed, means first item is the file name and all other
-following are content lines inside this file
+- If only `-f` flag passed, means first item is the file name.
 
-`python create_file.py -f file.txt "Line1 content" "Line2 content" "Line3
-content"` - creates
-file `file.txt` inside current directory with content:
+`python create_file.py -f file.txt`
+
+After pressing `Enter` it creates file `file.txt` and then terminal should
+ask you to input content lines until you input "stop": 
+```python
+Enter content line: Line1 content
+Enter content line: Line2 content
+Enter content line: Line3 content
+Enter content line: stop
+```
+This creates file `file.txt` inside current directory with content:
 ```python
 2022-02-01 14:41:10
 1 Line1 content
@@ -25,8 +32,14 @@ file `file.txt` inside current directory with content:
 App should add current timestamp at the top and number lines. If `file.txt`
 already exists it should add content below:
 
-`python create_file.py -f file.txt "Another line1 content" "Another line2 content" 
-"Another line3 content"`
+`python create_file.py -f file.txt`
+```python
+Enter content line: Another line1 content
+Enter content line: Another line2 content
+Enter content line: Another line3 content
+Enter content line: stop
+```
+
 ```python
 2022-02-01 14:41:10
 1 Line1 content
@@ -43,11 +56,18 @@ already exists it should add content below:
 - If both `-d` and `-f` flags passed, app creates directory and
 file with content inside this directory.
 
-`python create_file.py -d dir1 dir2 -f file.txt "Line1 content" "Line2 content" 
-"Line3 content"` - 
-creates directory `dir1/dir2` inside current directory and 
+`python create_file.py -d dir1 dir2 -f file.txt` 
+```python
+Enter content line: Line1 content
+Enter content line: Line2 content
+Enter content line: Line3 content
+Enter content line: stop
+```
+Creates directory `dir1/dir2` inside current directory and 
 creates file `file.txt`
 inside that directory with content:
+
+`dir1/dir2/file.txt: `
 ```python
 2022-02-01 14:46:01
 1 Line1 content
