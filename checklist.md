@@ -7,18 +7,20 @@
 Good example:
 
 ```python
-if condition:
-    break
-print("Best practice")
+for _ in range(10):
+    if condition:
+        break
+    print("Best practice")
 ```
 
 Bad example:
 
 ```python
-if condition:
-    break
-else:
-    print("Bad practice")
+for _ in range(10):
+    if condition:
+        break
+    else:
+        print("Bad practice")
 ```
 
 2. Use `os` methods to make your code cross-platform.
