@@ -21,26 +21,38 @@ def create_file(file_path: str) -> None:
             line_number += 1
 
 
+def get_files() -> list:
+    args = sys.argv
+    if "-f" not in args:
+        return []
+    start = args.index("-f") + 1
+    end = len(args)
+    if "-d" in args and args.index("-d") > start:
+        end = args.index("-d")
+    return args[start:end]
+
+
+def get_dirs() -> list:
+    args = sys.argv
+    if "-d" not in args:
+        return []
+    start = args.index("-d") + 1
+    end = len(args)
+    if "-f" in args and args.index("-f") > start:
+        end = args.index("-f")
+    return args[start:end]
+
+
 def main() -> None:
-    args = sys.argv[1:]
-    if "-d" in args:
-        d_index = args.index("-d")
-        if "-f" in args:
-            f_index = args.index("-f")
-            dirs = args[d_index + 1:f_index]
-            file_name = args[f_index + 1]
-            path = os.path.join(*dirs)
-            create_directories(path)
-            file_path = os.path.join(path, file_name)
-            create_file(file_path)
-        else:
-            dirs = args[d_index + 1:]
-            path = os.path.join(*dirs)
-            create_directories(path)
-    elif "-f" in args:
-        f_index = args.index("-f")
-        file_name = args[f_index + 1]
-        create_file(file_name)
+    files = get_files()
+    if not files:
+        return
+    dirs = get_dirs()
+    path = os.sep.join(dirs)
+    create_directories(path)
+    file_name = files[0]
+    file_path = os.path.join(path, file_name)
+    create_file(file_path)
 
 
 if __name__ == "__main__":
